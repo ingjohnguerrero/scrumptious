@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scrumptious</title>
+    <link rel="stylesheet" href="/css/vendor/foundation.css" />
+    <script src='/js/vendor/jquery.js'></script>
+    <script src='/js/vendor/handlebars.js'></script>
+    <script src='/js/vendor/ember.js'></script>
+    <script src='/js/vendor/ember-data.js'></script>
+    <script src='/js/app/app.js'></script>
+    <script src='/js/app/router.js'></script>
+    <script src='/js/app/store.js'></script>
+    <script src='/js/app/models/bookmark.js'></script>
+    <script src='/js/app/controllers/bookmarks.js'></script>
+  </head>
+  <body>
+    <script type='text/x-handlebars'>
+      <h1>{{#linkTo 'index'}}Scrumptious{{/linkTo}}</h1>
+      <li>
+        {{#linkTo 'bookmarks'}}List all bookmarks{{/linkTo}}
+      </li>
+
+      {{outlet}}
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='bookmarks'>
+      <h2>All bookmarks</h2>
+
+      <table class='twelve'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Favorite?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each controller}}
+            <td>{{title}}</td>
+            <td>{{url}}</td>
+            <td>{{#if isFavorite}}
+              &#x2716;
+              {{/if}}</td>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+  </body>
+</html>
